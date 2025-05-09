@@ -51,7 +51,8 @@ fun CrearRifaScreen(navController: NavController, viewModel: RifaViewModel) {
             value = fecha,
             onValueChange = { fecha = it },
             label = { Text("Fecha de la rifa") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .clickable { datePickerDialog.show() },
             enabled = false,
             readOnly = true,
@@ -68,6 +69,20 @@ fun CrearRifaScreen(navController: NavController, viewModel: RifaViewModel) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Guardar")
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        Button(
+            onClick = {
+                navController.popBackStack() // O navController.navigate("main") si usas rutas
+            },
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.secondary
+            )
+        ) {
+            Text("Volver")
         }
     }
 }
