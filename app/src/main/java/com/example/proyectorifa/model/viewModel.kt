@@ -47,8 +47,18 @@ class RifaViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
+
     suspend fun obtenerRifaPorId(id: Int): Rifa? {
         return rifaDao.obtenerRifaPorId(id)
     }
 
+    // Nueva función para eliminar la rifa
+    suspend fun eliminarRifa(id: Int) {
+        val rifa = rifaDao.obtenerRifaPorId(id)
+        if (rifa != null) {
+            rifaDao.eliminarRifa(rifa)
+            cargarRifas()  // Actualiza la lista de rifas después de eliminar
+        }
+    }
 }
+
